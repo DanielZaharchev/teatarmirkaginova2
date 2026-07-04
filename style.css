@@ -502,6 +502,104 @@ section{ padding:88px 0; }
   .flip .num{ font-size:1.5rem; }
 }
 
+/* ===================== SCROLL PROGRESS BAR ===================== */
+.scroll-progress{
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg, var(--curtain-2), var(--gold));
+  z-index:999; transition:width .1s linear;
+}
+
+/* ===================== HEADER SHRINK ===================== */
+.site-header{ transition:padding .3s ease, box-shadow .3s ease; }
+.site-header.shrink .nav-wrap{ padding:8px 28px; }
+.site-header.shrink{ box-shadow:0 6px 24px rgba(0,0,0,.3); }
+.site-header.shrink .brand-mark{ width:32px; height:32px; }
+
+/* ===================== MARQUEE TICKER ===================== */
+.marquee{
+  background:var(--stage-black-2);
+  border-top:1px solid rgba(201,162,75,.25);
+  border-bottom:1px solid rgba(201,162,75,.25);
+  overflow:hidden;
+  padding:12px 0;
+  position:relative;
+}
+.marquee::before, .marquee::after{
+  content:''; position:absolute; top:0; bottom:0; width:60px; z-index:2;
+}
+.marquee::before{ left:0; background:linear-gradient(to right, var(--stage-black-2), transparent); }
+.marquee::after{ right:0; background:linear-gradient(to left, var(--stage-black-2), transparent); }
+.marquee-track{
+  display:flex; width:max-content;
+  animation:marquee-scroll 26s linear infinite;
+}
+.marquee-track span{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:'Unbounded', sans-serif; font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gold-light); padding:0 28px; white-space:nowrap;
+}
+.marquee-track span::after{ content:'★'; color:var(--gold); font-size:.6rem; margin-left:28px; }
+@keyframes marquee-scroll{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+
+/* ===================== STATS COUNTER ===================== */
+.stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center; }
+.stat{ padding:12px; }
+.stat .stat-num{
+  font-family:'Unbounded', sans-serif; font-weight:700;
+  font-size:clamp(2.1rem,4.5vw,3rem);
+  color:var(--gold);
+  display:inline-flex; align-items:baseline; gap:2px;
+}
+.stat .stat-label{ margin-top:8px; color:rgba(243,233,216,.65); font-size:.88rem; letter-spacing:.02em; }
+
+/* ===================== CARD TILT ===================== */
+.tilt{ transform-style:preserve-3d; will-change:transform; }
+
+/* ===================== BUTTON SHINE ===================== */
+.btn-gold::before{
+  content:'';
+  position:absolute; top:0; left:-60%; width:40%; height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent);
+  transform:skewX(-20deg);
+  transition:left .6s ease;
+}
+.btn-gold:hover::before{ left:130%; }
+
+/* ===================== FLOATING MASK DECORATIONS ===================== */
+.float-mask{
+  position:absolute; opacity:.16; pointer-events:none; z-index:1;
+  animation:float-drift 12s ease-in-out infinite;
+}
+.float-mask.m2{ animation-duration:15s; animation-delay:-4s; opacity:.11; }
+.float-mask.m3{ animation-duration:10s; animation-delay:-7s; opacity:.09; }
+@keyframes float-drift{
+  0%,100%{ transform:translateY(0) rotate(0deg); }
+  50%{ transform:translateY(-22px) rotate(6deg); }
+}
+
+/* ===================== PAGE TRANSITION CURTAIN ===================== */
+.page-transition{ position:fixed; inset:0; z-index:9999; pointer-events:none; }
+.pt-panel{
+  position:absolute; top:0; bottom:0; width:50%;
+  background:repeating-linear-gradient(90deg,
+      var(--curtain-3) 0px, var(--curtain-2) 26px, var(--curtain-1) 52px, var(--curtain-2) 78px);
+  box-shadow:inset 0 0 90px rgba(0,0,0,.55);
+}
+.pt-left{ left:0; transform:translateX(-100%); }
+.pt-right{ right:0; transform:translateX(100%); }
+.page-transition.closing{ pointer-events:auto; }
+.page-transition.closing .pt-left{ animation:pt-close-left .45s var(--ease) forwards; }
+.page-transition.closing .pt-right{ animation:pt-close-right .45s var(--ease) forwards; }
+@keyframes pt-close-left{ to{ transform:translateX(0); } }
+@keyframes pt-close-right{ to{ transform:translateX(0); } }
+
+@media (max-width:880px){
+  .stats-grid{ grid-template-columns:repeat(2,1fr); }
+}
+
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
 }

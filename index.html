@@ -5,9 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Театар Мирка Гинова | Официјален вебсајт</title>
 <meta name="description" content="Официјален вебсајт на Театар Мирка Гинова. Настани, историја, галерија и културни активности.">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="scroll-progress"></div>
+<div class="page-transition"><div class="pt-panel pt-left"></div><div class="pt-panel pt-right"></div></div>
 
 <header class="site-header">
   <div class="nav-wrap">
@@ -26,10 +34,20 @@
   </div>
 </header>
 
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>🎭 Театар Мирка Гинова</span><span>Од 1963 година</span><span>Жива сцена, жива публика</span><span>Аматерски театар Демир Капија</span>
+    <span>🎭 Театар Мирка Гинова</span><span>Од 1963 година</span><span>Жива сцена, жива публика</span><span>Аматерски театар Демир Капија</span>
+  </div>
+</div>
+
 <section class="hero">
   <div class="curtain curtain-left"></div>
   <div class="curtain curtain-right"></div>
   <div class="spotlight"></div>
+  <img class="float-mask m1" src="mask-icon-white.png" alt="" style="width:64px; top:14%; left:10%;">
+  <img class="float-mask m2" src="mask-icon-white.png" alt="" style="width:44px; top:62%; right:12%;">
+  <img class="float-mask m3" src="mask-icon-white.png" alt="" style="width:36px; bottom:10%; left:22%;">
   <div class="hero-floor"></div>
   <div class="hero-content">
     <img class="hero-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPy3yxMBMo8drAe4vYuM9fNyiMT8QwUuF4Uw&s" alt="Лого на Театар Мирка Гинова">
@@ -67,24 +85,47 @@
       <p>Три чекори до сцената — од фотографии до претстави што доаѓаат.</p>
     </div>
     <div class="quick-grid">
-      <a class="quick-card reveal reveal-delay-1" href="gallery.html">
+      <a class="quick-card tilt reveal reveal-delay-1" href="gallery.html">
         <div class="icon">🎬</div>
         <h3>Галерија</h3>
         <p>Моменти од претставите низ годините.</p>
         <span class="go">Разгледај →</span>
       </a>
-      <a class="quick-card reveal reveal-delay-2" href="history.html">
+      <a class="quick-card tilt reveal reveal-delay-2" href="history.html">
         <div class="icon">🏛️</div>
         <h3>Историја</h3>
         <p>Патот од 1963 година до денес.</p>
         <span class="go">Прочитај →</span>
       </a>
-      <a class="quick-card reveal reveal-delay-3" href="events.html">
+      <a class="quick-card tilt reveal reveal-delay-3" href="events.html">
         <div class="icon">🎟️</div>
         <h3>Настани</h3>
         <p>Претстојни претстави и резервации.</p>
         <span class="go">Резервирај →</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-num" data-count="63" data-suffix="+">0</div>
+        <div class="stat-label">Години на сцена</div>
+      </div>
+      <div class="stat reveal reveal-delay-1">
+        <div class="stat-num" data-count="20" data-suffix="+">0</div>
+        <div class="stat-label">Активни членови</div>
+      </div>
+      <div class="stat reveal reveal-delay-2">
+        <div class="stat-num" data-count="100" data-suffix="+">0</div>
+        <div class="stat-label">Изведени претстави</div>
+      </div>
+      <div class="stat reveal reveal-delay-3">
+        <div class="stat-num" data-count="4">0</div>
+        <div class="stat-label">Претстави оваа сезона</div>
+      </div>
     </div>
   </div>
 </section>
@@ -112,17 +153,17 @@
       <h2>Најди нè</h2>
     </div>
     <div class="contact-grid">
-      <div class="contact-card reveal reveal-delay-1">
+      <div class="contact-card tilt reveal reveal-delay-1">
         <div class="icon">📍</div>
         <h4>Локација</h4>
         <p>Дом на култура „Мирка Гинова"<br>Демир Капија</p>
       </div>
-      <div class="contact-card reveal reveal-delay-2">
+      <div class="contact-card tilt reveal reveal-delay-2">
         <div class="icon">📞</div>
         <h4>Телефон</h4>
         <p><a href="tel:072314572">072 314 572</a></p>
       </div>
-      <div class="contact-card reveal reveal-delay-3">
+      <div class="contact-card tilt reveal reveal-delay-3">
         <div class="icon">✉️</div>
         <h4>Е-пошта</h4>
         <p><a href="mailto:teatarmirkaginova@gmail.com">teatarmirkaginova@gmail.com</a></p>
