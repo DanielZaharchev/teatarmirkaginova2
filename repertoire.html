@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Репертоар | Театар Мирка Гинова</title>
+<meta name="description" content="Репертоар на Театар Мирка Гинова.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">МГ</span>
+      <span class="brand-name">Театар Мирка Гинова<small>Демир Капија • од 1963</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Мени"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Почетна</a></li>
+      <li><a href="history.html">Историја</a></li>
+      <li><a href="events.html">Настани</a></li>
+      <li><a href="gallery.html">Галерија</a></li>
+      <li><a href="repertoire.html">Репертоар</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero-small">
+  <div class="curtain curtain-left"></div>
+  <div class="curtain curtain-right"></div>
+  <div class="hero-small-content">
+    <span class="eyebrow">🎭 Оваа сезона</span>
+    <h1>Репертоар</h1>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:36px;">
+      <p>Четири претстави, четири различни светови. Резервирајте карти за оние што доаѓаат.</p>
+      <a class="btn btn-gold" href="events.html" style="margin-top:18px;">🎟️ Купи карти</a>
+    </div>
+
+    <div class="repertoire-grid">
+
+      <article class="repertoire-card reveal">
+        <div class="repertoire-poster"><img src="https://teatarmirkaginova.vercel.app/somnitelnolice.jpg" alt="Плакат за претставата Сомнително лице" loading="lazy"></div>
+        <div class="repertoire-body">
+          <span class="badge">⭐ Следна</span>
+          <h3>Сомнително лице</h3>
+          <p class="meta">📅 <b>1 Јули 2026</b> • 20:00<br>
+          🎬 Режисер: Томе Атанасов<br>
+          👥 Даниел Захарчев, Бобан Мелов, Јосиф Чапов, Ана Крстевска</p>
+        </div>
+      </article>
+
+      <article class="repertoire-card reveal reveal-delay-1">
+        <div class="repertoire-poster"><img src="https://teatarmirkaginova.vercel.app/ime.jpg" alt="Плакат за претставата Име" loading="lazy"></div>
+        <div class="repertoire-body">
+          <h3>Име</h3>
+          <p class="meta">📅 <b>15 Август 2026</b> • 20:00<br>
+          🎬 Режисер: Марко Стојанов<br>
+          👥 Елена Петрова, Стефан Иванов, Марија Николовска, Александар Трајков</p>
+        </div>
+      </article>
+
+      <article class="repertoire-card reveal reveal-delay-2">
+        <div class="repertoire-poster"><img src="https://teatarmirkaginova.vercel.app/teodos.jpg" alt="Плакат за претставата Чорбаџи Теодос" loading="lazy"></div>
+        <div class="repertoire-body">
+          <h3>Чорбаџи Теодос</h3>
+          <p class="meta">📅 <b>10 Октомври 2026</b> • 20:00<br>
+          🎬 Режисер: Томе Атанасов<br>
+          👥 Даниел Захарчев, Бобан Мелов, Јосиф Чапов, Ана Крстевска</p>
+        </div>
+      </article>
+
+      <article class="repertoire-card reveal reveal-delay-3">
+        <div class="repertoire-poster"><img src="https://teatarmirkaginova.vercel.app/begalka.jpg" alt="Плакат за претставата Бегалка" loading="lazy"></div>
+        <div class="repertoire-body">
+          <h3>Бегалка</h3>
+          <p class="meta">📅 <b>20 Ноември 2026</b> • 20:00<br>
+          🎬 Режисер: Виктор Андонов<br>
+          👥 Сара Јованова, Игор Митрев, Тамара Спасовска, Никола Ангелов</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span class="foot-mark">Театар Мирка Гинова</span>
+  © 2026 Театар Мирка Гинова
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Keep the "⭐ Следна" badge in sync with whichever show is actually next.
+    const next = getNextShow();
+    document.querySelectorAll('.repertoire-card').forEach(card => {
+      const title = card.querySelector('h3').textContent.trim();
+      const badge = card.querySelector('.badge');
+      if (badge && title !== next.title) badge.remove();
+      if (!badge && title === next.title) {
+        const b = document.createElement('span');
+        b.className = 'badge';
+        b.textContent = '⭐ Следна';
+        card.querySelector('.repertoire-body').prepend(b);
+      }
+    });
+  });
+</script>
+</body>
+</html>

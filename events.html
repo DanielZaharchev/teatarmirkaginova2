@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Настани | Театар Мирка Гинова</title>
+<meta name="description" content="Официјален вебсајт на Театар Мирка Гинова. Настани, историја, галерија и културни активности.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">МГ</span>
+      <span class="brand-name">Театар Мирка Гинова<small>Демир Капија • од 1963</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Мени"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Почетна</a></li>
+      <li><a href="history.html">Историја</a></li>
+      <li><a href="events.html">Настани</a></li>
+      <li><a href="gallery.html">Галерија</a></li>
+      <li><a href="repertoire.html">Репертоар</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero-small">
+  <div class="curtain curtain-left"></div>
+  <div class="curtain curtain-right"></div>
+  <div class="hero-small-content">
+    <span class="eyebrow">🎟️ Резервирај место</span>
+    <h1>Настани</h1>
+  </div>
+</section>
+
+<section data-countdown class="section-alt">
+  <div class="container countdown-panel reveal">
+    <div class="countdown-title">
+      <span class="eyebrow">🎭 Одбројување до следната претстава</span>
+      <div class="show-name" data-show-name>Се вчитува…</div>
+    </div>
+    <div class="countdown-grid">
+      <div class="flip"><span class="num" data-d>00</span><span class="lbl">Дена</span></div>
+      <div class="flip"><span class="num" data-h>00</span><span class="lbl">Часа</span></div>
+      <div class="flip"><span class="num" data-m>00</span><span class="lbl">Минути</span></div>
+      <div class="flip"><span class="num" data-s>00</span><span class="lbl">Секунди</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Календар</span>
+      <h2>Претстојни претстави</h2>
+      <p>Изберете претстава и резервирајте го вашето место на сцената.</p>
+    </div>
+
+    <div class="ticket-grid" id="ticket-grid">
+      <article class="ticket reveal" data-show="somnitelno">
+        <div class="ticket-main">
+          <span class="badge badge-soon" data-badge>Наскоро</span>
+          <h3>Сомнително лице</h3>
+          <p class="meta">📅 1 Јули 2026 • 20:00</p>
+          <button class="btn btn-outline" data-reserve="Сомнително лице">Резервирај место</button>
+        </div>
+        <div class="ticket-stub"><span>ВЛЕЗ</span></div>
+      </article>
+
+      <article class="ticket reveal reveal-delay-1" data-show="ime">
+        <div class="ticket-main">
+          <span class="badge badge-soon" data-badge>Наскоро</span>
+          <h3>Име</h3>
+          <p class="meta">📅 15 Август 2026 • 20:00</p>
+          <button class="btn btn-outline" data-reserve="Име">Резервирај место</button>
+        </div>
+        <div class="ticket-stub"><span>ВЛЕЗ</span></div>
+      </article>
+
+      <article class="ticket reveal reveal-delay-2" data-show="teodos">
+        <div class="ticket-main">
+          <span class="badge badge-soon" data-badge>Наскоро</span>
+          <h3>Чорбаџи Теодос</h3>
+          <p class="meta">📅 10 Октомври 2026 • 20:00</p>
+          <button class="btn btn-outline" data-reserve="Чорбаџи Теодос">Резервирај место</button>
+        </div>
+        <div class="ticket-stub"><span>ВЛЕЗ</span></div>
+      </article>
+
+      <article class="ticket reveal reveal-delay-3" data-show="begalka">
+        <div class="ticket-main">
+          <span class="badge badge-soon" data-badge>Наскоро</span>
+          <h3>Бегалка</h3>
+          <p class="meta">📅 20 Ноември 2026 • 20:00</p>
+          <button class="btn btn-outline" data-reserve="Бегалка">Резервирај место</button>
+        </div>
+        <div class="ticket-stub"><span>ВЛЕЗ</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Reservation confirmation modal -->
+<div class="modal-overlay" id="reservation-modal">
+  <div class="modal-box">
+    <button class="modal-close" data-close-modal aria-label="Затвори">✕</button>
+    <div class="modal-icon">🎟️</div>
+    <h3>Резервација потврдена</h3>
+    <p><span data-res-title>Претставата</span> — местото е ваше. Ви благодариме!</p>
+    <div style="margin-top:22px;">
+      <button class="btn btn-gold" data-close-modal>Во ред, фала!</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <span class="foot-mark">Театар Мирка Гинова</span>
+  © 2026 Театар Мирка Гинова
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Mark next/past show badge dynamically based on SHOWS data
+  document.addEventListener('DOMContentLoaded', () => {
+    const now = new Date();
+    const next = getNextShow();
+    document.querySelectorAll('.ticket').forEach(t => {
+      const id = t.dataset.show;
+      const show = SHOWS.find(s => s.id === id);
+      if (!show) return;
+      const badge = t.querySelector('[data-badge]');
+      const isPast = new Date(show.date) < now;
+      if (show.id === next.id) {
+        badge.textContent = '⭐ Следна претстава';
+        badge.className = 'badge badge-next';
+      } else if (isPast) {
+        badge.textContent = 'Изведена';
+        badge.className = 'badge badge-past';
+        t.classList.add('is-past');
+        const btn = t.querySelector('[data-reserve]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Заврши'; }
+      }
+    });
+  });
+</script>
+</body>
+</html>
