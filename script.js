@@ -70,20 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
     revealEls.forEach(el => io.observe(el));
   } else {
     revealEls.forEach(el => el.classList.add('in-view'));
   }
-
-  // ===================== HERO PARALLAX =====================
-  const parallaxEl = document.querySelector('[data-parallax] img');
-  if (parallaxEl) {
-    document.addEventListener('scroll', () => {
-      const offset = Math.min(window.scrollY * 0.25, 120);
-      parallaxEl.style.transform = `translateY(${offset}px)`;
-    }, { passive: true });
-  }
+  // Fail-safe: never let content stay invisible if something goes wrong with the observer.
+  setTimeout(() => {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }, 2500);
 
   // ===================== MAGNETIC BUTTONS =====================
   const magneticBtns = document.querySelectorAll('.btn-gold');
