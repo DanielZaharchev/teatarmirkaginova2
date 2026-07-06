@@ -25,8 +25,11 @@ html{ scroll-behavior:smooth; }
 body{
   margin:0;
   background-color:var(--cream);
-  background-image:radial-gradient(rgba(36,28,23,.065) 1.5px, transparent 1.5px);
-  background-size:26px 26px;
+  background-image:
+    radial-gradient(rgba(36,28,23,.14) 1.5px, transparent 1.5px),
+    repeating-linear-gradient(135deg, rgba(36,28,23,.045) 0px, rgba(36,28,23,.045) 1px, transparent 1px, transparent 15px),
+    repeating-linear-gradient(45deg, rgba(36,28,23,.03) 0px, rgba(36,28,23,.03) 1px, transparent 1px, transparent 15px);
+  background-size:24px 24px, auto, auto;
   color:var(--ink);
   font-family:'PT Sans', sans-serif;
   font-size:18px;
@@ -99,7 +102,11 @@ h1,h2,h3,h4{
   display:flex; align-items:center; justify-content:center;
   color:var(--gold); font-family:'Unbounded',sans-serif; font-size:.85rem;
   flex-shrink:0;
+  background:var(--stage-black-2);
+  overflow:hidden;
+  transition:width .3s ease, height .3s ease;
 }
+.brand-mark img{ width:64%; height:64%; object-fit:contain; }
 .brand-name{
   font-family:'PT Serif', serif; font-weight:700; font-size:1.2rem;
   color:var(--cream); letter-spacing:.01em; line-height:1.15;
@@ -219,10 +226,20 @@ h1,h2,h3,h4{
 section{ padding:88px 0; }
 .section-alt{
   background-color:var(--cream-2);
-  background-image:radial-gradient(rgba(36,28,23,.065) 1.5px, transparent 1.5px);
-  background-size:26px 26px;
+  background-image:
+    radial-gradient(rgba(36,28,23,.14) 1.5px, transparent 1.5px),
+    repeating-linear-gradient(135deg, rgba(36,28,23,.045) 0px, rgba(36,28,23,.045) 1px, transparent 1px, transparent 15px),
+    repeating-linear-gradient(45deg, rgba(36,28,23,.03) 0px, rgba(36,28,23,.03) 1px, transparent 1px, transparent 15px);
+  background-size:24px 24px, auto, auto;
 }
-.section-dark{ background:var(--stage-black); color:var(--cream); }
+.section-dark{
+  background-color:var(--stage-black);
+  color:var(--cream);
+  background-image:
+    radial-gradient(rgba(201,162,75,.09) 1.5px, transparent 1.5px),
+    repeating-linear-gradient(135deg, rgba(201,162,75,.035) 0px, rgba(201,162,75,.035) 1px, transparent 1px, transparent 16px);
+  background-size:24px 24px, auto;
+}
 .section-head{ text-align:center; max-width:680px; margin:0 auto 52px; }
 .section-head h2{ font-size:clamp(1.9rem,4vw,2.6rem); margin-top:10px; }
 .section-head p{ color:var(--muted); margin-top:12px; font-size:1.08rem; }
@@ -576,12 +593,12 @@ section{ padding:88px 0; }
 
 /* ===================== WATERMARK ICONS (fill blank space) ===================== */
 .watermark{
-  position:absolute; pointer-events:none; z-index:0; opacity:.07;
+  position:absolute; pointer-events:none; z-index:0; opacity:.11;
   animation:float-drift 14s ease-in-out infinite;
 }
-.watermark.wm-lg{ width:170px; }
-.watermark.wm-md{ width:110px; }
-.watermark.wm-sm{ width:70px; }
+.watermark.wm-lg{ width:190px; }
+.watermark.wm-md{ width:130px; }
+.watermark.wm-sm{ width:80px; }
 section{ position:relative; }
 .about-grid, .contact-grid, .timeline, .ticket-grid, .repertoire-grid, .gallery-play-head, .section-head{ position:relative; z-index:1; }
 
