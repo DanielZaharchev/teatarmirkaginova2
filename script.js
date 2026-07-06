@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===================== SCROLL REVEAL =====================
-  const revealEls = document.querySelectorAll('.reveal');
+  const revealEls = document.querySelectorAll('.reveal, .img-reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -74,6 +74,29 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => io.observe(el));
   } else {
     revealEls.forEach(el => el.classList.add('in-view'));
+  }
+
+  // ===================== HERO PARALLAX =====================
+  const parallaxEl = document.querySelector('[data-parallax] img');
+  if (parallaxEl) {
+    document.addEventListener('scroll', () => {
+      const offset = Math.min(window.scrollY * 0.25, 120);
+      parallaxEl.style.transform = `translateY(${offset}px)`;
+    }, { passive: true });
+  }
+
+  // ===================== MAGNETIC BUTTONS =====================
+  const magneticBtns = document.querySelectorAll('.btn-gold');
+  if (window.matchMedia('(hover: hover)').matches) {
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.35;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
   }
 
   // ===================== SCROLL PROGRESS + HEADER SHRINK =====================
@@ -218,8 +241,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openAt(i){
       current = (i + thumbs.length) % thumbs.length;
-      imgEl.src = thumbs[current].dataset.full;
-      imgEl.alt = thumbs[current].dataset.caption || '';
+      imgEl.classList.remove('show');
+      setTimeout(() => {
+        imgEl.src = thumbs[current].dataset.full;
+        imgEl.alt = thumbs[current].dataset.caption || '';
+        requestAnimationFrame(() => imgEl.classList.add('show'));
+      }, imgEl.getAttribute('src') ? 160 : 0);
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
