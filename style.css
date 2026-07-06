@@ -220,7 +220,8 @@ h1,h2,h3,h4{
 .hero-small .curtain{ width:22%; }
 .hero-small-content{ position:relative; z-index:2; color:var(--cream); padding:60px 24px 40px; }
 .hero-small .eyebrow{ display:block; margin-bottom:10px; }
-.hero-small h1{ color:var(--cream); font-size:clamp(2.1rem,4.5vw,3rem); }
+.hero-small h1{ color:var(--cream); font-size:clamp(2.6rem,5.5vw,3.8rem); }
+.hero-small .eyebrow{ font-size:.95rem; }
 
 /* ===================== SECTIONS ===================== */
 section{ padding:88px 0; }
@@ -295,10 +296,11 @@ section{ padding:88px 0; }
   display:flex; flex-direction:column; align-items:center; gap:26px;
 }
 .countdown-title{ text-align:center; }
-.countdown-title .show-name{ font-family:'PT Serif',serif; font-size:1.7rem; color:var(--gold-light); margin-top:6px; }
-.countdown-grid{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+.countdown-title .show-name{ font-family:'PT Serif',serif; font-size:2.1rem; color:var(--gold-light); margin-top:10px; }
+.countdown-title .eyebrow{ font-size:1rem; }
+.countdown-grid{ display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
 .flip{
-  width:96px; padding:18px 0 14px;
+  width:118px; padding:24px 0 18px;
   background:var(--stage-black-2);
   border:1px solid rgba(201,162,75,.3);
   border-radius:6px;
@@ -306,7 +308,7 @@ section{ padding:88px 0; }
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.02), var(--shadow-soft);
 }
 .flip .num{
-  font-family:'Unbounded', sans-serif; font-size:2.3rem; font-weight:600;
+  font-family:'Unbounded', sans-serif; font-size:2.8rem; font-weight:600;
   color:var(--gold-light);
   display:inline-block;
   transition:transform .25s ease, opacity .25s ease;
@@ -316,7 +318,7 @@ section{ padding:88px 0; }
   0%{ transform:translateY(-6px) scale(.94); opacity:.4; }
   100%{ transform:translateY(0) scale(1); opacity:1; }
 }
-.flip .lbl{ display:block; margin-top:6px; font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.flip .lbl{ display:block; margin-top:8px; font-size:.86rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
 
 /* ===================== CONTACT ===================== */
 .contact-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
@@ -599,7 +601,7 @@ section{ padding:88px 0; }
 .watermark.wm-lg{ width:190px; }
 .watermark.wm-md{ width:130px; }
 .watermark.wm-sm{ width:80px; }
-section{ position:relative; }
+section{ position:relative; overflow:hidden; }
 .about-grid, .contact-grid, .timeline, .ticket-grid, .repertoire-grid, .gallery-play-head, .section-head{ position:relative; z-index:1; }
 
 /* ===================== FLOATING MASK DECORATIONS ===================== */
