@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://teatarmirkaginova.vercel.app/sitemap.xml
+Sitemap: https://teatarmirkaginova2.vercel.app/sitemap.xml
